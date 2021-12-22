@@ -1,0 +1,7 @@
+default:
+  image: hashicorp/packer
+
+ci:
+  stage: build
+  script:
+    - packer validate .
