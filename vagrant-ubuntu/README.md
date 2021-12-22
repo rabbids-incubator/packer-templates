@@ -2,6 +2,16 @@
 
 ## How to create or update templates
 
+* Install requirements
+  * Packer
+  * Vagrant
+  * VirtualBox
+
+* Open the repository in an IDE, such as Visual Studio Code
+  * Update HCL and scripts files
+
+* Validate locally the templates
+
 ```bash
 # installs requirements
 packer init .
