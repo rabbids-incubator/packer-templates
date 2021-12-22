@@ -1,8 +1,14 @@
 default:
-  image: hashicorp/packer
+  image: ubuntu:20.04
 
 ci:
   stage: build
+  before_script:
+    - export VER="1.7.8"
+    - wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
+    - unzip packer_${VER}_linux_amd64.zip
+    - sudo mv packer /usr/local/bin
+    - packer --version
   script:
     - cd vagrant-ubuntu
     - packer validate .
