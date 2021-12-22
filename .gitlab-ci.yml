@@ -1,0 +1,8 @@
+default:
+  image: hashicorp/packer
+
+ci:
+  stage: build
+  script:
+    - cd vagrant-ubuntu
+    - packer validate .
