@@ -1,1 +1,5 @@
+# gitlab runner build folder
+/builds/
+
+# packer output folders
 output-*

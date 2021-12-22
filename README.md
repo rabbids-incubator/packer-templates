@@ -8,6 +8,8 @@ Packer templates to build and publish machines images.
 
 ## Vagrant boxes
 
+* Vagrant must be installed
+
 * Look at the available Vagrant boxes on [Artifactory repository](https://devpro.jfrog.io/ui/repos/tree/General/rabbidsincubator-vagrant)
 
 System | Package name | Box base image
@@ -36,10 +38,17 @@ rm Vagrantfile
 
 ## How to contribute
 
-* Read [design documentation](./docs/design.md)
+* Review the [design documentation](./docs/design.md)
 
-* Look at the templates
+* Open the template(s) you are interested in
 
 Template folder | Image type | System
 --------------- | ---------- | ------
 [`vagrant-ubuntu`](./vagrant-ubuntu/README.md) | Vagrant box | Ubuntu
+
+### How to run locally the GitLab pipeline
+
+```bash
+mkdir -p .gitlab/runner/local
+docker run --rm --name gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock -v $PWD/.gitlab/runner/local/config:/etc/gitlab-runner -v $PWD:$PWD --workdir $PWD gitlab/gitlab-runner exec shell ci
+```
