@@ -4,10 +4,9 @@ default:
 ci:
   stage: build
   before_script:
-    - export VER="1.7.8"
-    - wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
-    - unzip packer_${VER}_linux_amd64.zip
-    - sudo mv packer /usr/local/bin
+    - curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    - sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    - sudo apt-get update && sudo apt-get install packer
     - packer --version
   script:
     - cd vagrant-ubuntu
