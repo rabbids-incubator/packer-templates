@@ -13,6 +13,9 @@
 * Validate locally the templates
 
 ```bash
+# changes directory
+cd vagrant-ubuntu
+
 # installs requirements
 packer init .
 
@@ -22,8 +25,11 @@ packer fmt .
 # validates the template
 packer validate .
 
+# cleans previous run files
+rm -rf output-ubuntu/
+
 # debugs the build
-PACKER_LOG=1 packer build ubuntu.pkr.hcl -var 'vagrant_source=generic/ubuntu2004'
+PACKER_LOG=1 packer build -var 'vagrant_source=generic/ubuntu2004' ubuntu.pkr.hcl
 
 # (optional) downloads the box and update the hcl file to use the local file
 ```
